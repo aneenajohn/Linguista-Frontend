@@ -1,55 +1,79 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { postUpdated, selectPostById } from "./timelineSlice";
+import { useNavigate } from "react-router-dom";
+import { postUpdated, selectPostById, updatedPost } from "./timelineSlice";
 import { useParams, useLocation } from "react-router-dom";
+import "./timeline.css";
+// import {updatedPost} from "./timelineSlice;"
 
 export const EditPost = () => {
   const { postId } = useParams();
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   // const post = useSelector((state) =>
   //   state.posts.find((post) => post.id === postId)
   // );
+
   const post = useSelector((state) => selectPostById(state, postId));
 
-  const [title, setTitle] = useState(post.title);
-  const [content, setContent] = useState(post.content);
+  const {
+    user: { _id, username },
+    token
+  } = useSelector((state) => state.auth);
+
+  console.log("post in edit post page", post);
+  const [title, setTitle] = useState(post?.title);
+  const [content, setContent] = useState(post?.description);
 
   const onTitleChanged = (e) => setTitle(e.target.value);
   const onContentChanged = (e) => setContent(e.target.value);
-  const onSavePostClicked = () => {
+
+  const onSavePostClicked = async () => {
     if (title && content) {
-      dispatch(postUpdated({ id: postId, title, content }));
-      history.push(`/posts/${postId}`);
+      await dispatch(postUpdated({ id: postId, title, content }));
+      navigate(`/posts/${postId}`);
+      await dispatch(updatedPost({ userId: _id, title, content, token }));
     }
   };
 
   return (
     <section>
-      <h2>Edit Post</h2>
+      <h2 className="para--lead">Edit Post</h2>
       <form>
-        <label htmlFor="postTitle">Post Title:</label>
+        <label htmlFor="postTitle" className="para">
+          Post Title:
+        </label>
+        <br />
         <input
           type="text"
           id="postTitle"
-          name="postTitle"
+          className="postTitle"
           placeholder="What's on your mind?"
           value={title}
           onChange={onTitleChanged}
         />
-        <label htmlFor="postContent">Content:</label>
+        <br />
+        <label htmlFor="postContent" className="para">
+          Content:
+        </label>
+        <br />
         <textarea
           id="postContent"
-          name="postContent"
+          className="postContent"
           value={content}
           onChange={onContentChanged}
         />
       </form>
-      <button type="button" onClick={onSavePostClicked}>
-        Save Post
-      </button>
+      <div class="btn__container">
+        <button
+          type="button"
+          className="btn btn--primary"
+          onClick={onSavePostClicked}
+        >
+          Save Post
+        </button>
+      </div>
     </section>
   );
 };

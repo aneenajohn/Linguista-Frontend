@@ -14,7 +14,7 @@ export const PostExcerpt = ({ post }) => {
         <TimeAgo timestamp={post.createdAt} />
       </div>
       <p className="post-content para">
-        {post.description.substring(0, 100).concat("....")}
+        {post.description?.substring(0, 100).concat("....")}
       </p>
       <ReactionButtons post={post} />
       <Link to={`/posts/${post._id}`} className="button muted-button para">

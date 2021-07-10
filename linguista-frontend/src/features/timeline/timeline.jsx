@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectAllPosts, fetchPosts } from "./timelineSlice";
 import { PostExcerpt } from "./postExcerpt";
 import { AddNewPost } from "./addNewPost";
+// import { Topbar } from "../topbar/topbar";
 
 export const Timeline = () => {
   const dispatch = useDispatch();

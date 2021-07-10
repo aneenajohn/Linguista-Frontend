@@ -8,7 +8,7 @@ import { selectPostById } from "./timelineSlice";
 import { useParams, useLocation } from "react-router-dom";
 import "./timeline.css";
 
-export const SinglePostPage = ({ match }) => {
+export const SinglePostPage = () => {
   const { postId } = useParams();
 
   const post = useSelector((state) => selectPostById(state, postId));

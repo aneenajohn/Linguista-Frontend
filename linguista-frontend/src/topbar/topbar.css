@@ -1,0 +1,20 @@
+.topbarContainer {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background-color: var(--primary-color);
+}
+
+.topbarLeft {
+  flex: 3;
+}
+
+.logo {
+  margin-left: 1.2rem;
+  font-weight: bold;
+  color: var(--ow-font-color);
+  cursor: pointer;
+}

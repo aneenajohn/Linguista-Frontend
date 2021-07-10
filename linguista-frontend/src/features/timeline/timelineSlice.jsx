@@ -29,6 +29,7 @@ export const updateUserReaction = createAsyncThunk(
       },
       headers: { authorization: token }
     });
+    return response.data;
   }
 );
 
@@ -37,6 +38,23 @@ export const newPostCreated = createAsyncThunk(
   async ({ userId, title, description, token }) => {
     console.log("Post called for new post");
     console.log("In post call, ", userId, title, description, token);
+    const response = await axios({
+      method: "post",
+      url: `${process.env.REACT_APP_BACKEND_API}/post/`,
+      data: {
+        userId,
+        title,
+        description
+      },
+      headers: { authorization: token }
+    });
+    return response.data;
+  }
+);
+
+export const updatedPost = createAsyncThunk(
+  "timeline/postUpdated",
+  async ({ userId, title, description, token }) => {
     const response = await axios({
       method: "post",
       url: `${process.env.REACT_APP_BACKEND_API}/post/`,
@@ -69,6 +87,14 @@ const timelineSlice = createSlice({
     },
     postAdded: (state, action) => {
       state.timeline.concat(action.payload);
+    },
+    postUpdated: (state, action) => {
+      const { id, title, content } = action.payload;
+      const existingPost = state.timeline.find((post) => post._id === id);
+      if (existingPost) {
+        existingPost.title = title;
+        existingPost.description = content;
+      }
     }
   },
   extraReducers: {
@@ -103,4 +129,4 @@ export const selectPostById = (state, postId) =>
   state.timeline.timeline.find((post) => post._id === postId);
 
 export default timelineSlice.reducer;
-export const { reactionAdded, postAdded } = timelineSlice.actions;
+export const { reactionAdded, postAdded, postUpdated } = timelineSlice.actions;
