@@ -32,7 +32,7 @@ export const SinglePostPage = () => {
         <article className="post">
           <h2>{post.title}</h2>
           <div>
-            <PostAuthor userId={post.user} />
+            <PostAuthor userId={post.userId} />
             <TimeAgo timestamp={post.createdAt} />
           </div>
           <p className="post-content para">{post.description}</p>
