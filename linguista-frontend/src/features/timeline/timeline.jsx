@@ -16,7 +16,6 @@ export const Timeline = () => {
 
   const timelineStatus = useSelector((state) => state.timeline.status);
   const error = useSelector((state) => state.timeline.error);
-  const { timeline } = useSelector((state) => state.timeline);
 
   console.log("posts", posts);
 
@@ -37,7 +36,9 @@ export const Timeline = () => {
         <AddNewPost />
         <h1 className="postTitle">Timeline</h1>
         {timelineStatus === "loading" && <h2>Loading....</h2>}
-        {timelineStatus === "error" && <h2>Something went wrong... </h2>}
+        {timelineStatus === "error" && (
+          <h2>Something went wrong, the following error occured {error}</h2>
+        )}
         {timelineStatus === "succeeded" &&
           (posts.length === 0 ? (
             <div className="para--lead">No posts yet!</div>

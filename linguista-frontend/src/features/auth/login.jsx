@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast, ToastContainer } from "react-toastify";
 
 export const Login = () => {
-  const { isLoggedIn, status, error } = useSelector((state) => state.auth);
+  const { status } = useSelector((state) => state.auth);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,8 +18,6 @@ export const Login = () => {
 
   const onEmailChanged = (e) => setEmail(e.target.value);
   const onPasswordChanged = (e) => setPassword(e.target.value);
-  const onShowPasswordClicked = () =>
-    setShowPassword((showPassword) => !showPassword);
 
   const loginHandler = async (e) => {
     e.preventDefault();

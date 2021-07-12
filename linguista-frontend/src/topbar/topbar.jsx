@@ -4,7 +4,6 @@ import Avatar from "@material-ui/core/Avatar";
 import PeopleIcon from "@material-ui/icons/People";
 import RssFeedIcon from "@material-ui/icons/RssFeed";
 import { useDispatch, useSelector } from "react-redux";
-import { randomColor } from "../features/users/utils";
 import { useStyles } from "../features/users/userStyles";
 import { useState } from "react";
 import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";

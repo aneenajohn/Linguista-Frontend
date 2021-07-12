@@ -7,7 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import { fetchUsers } from "./userSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Topbar } from "../../topbar/topbar";
 import "../timeline/timeline.css";
 import "./users.css";

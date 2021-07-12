@@ -5,7 +5,7 @@ import { PostAuthor } from "./postAuthor";
 import { TimeAgo } from "./timeAgo";
 import { ReactionButtons } from "./reactionButtons";
 import { selectPostById } from "./timelineSlice";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./timeline.css";
 import { Topbar } from "../../topbar/topbar";
 

@@ -8,7 +8,7 @@ import {
   postDeleted,
   userDeleted
 } from "./timelineSlice";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./timeline.css";
 import { Topbar } from "../../topbar/topbar";
 // import {updatedPost} from "./timelineSlice;"
@@ -25,7 +25,7 @@ export const EditPost = () => {
   const post = useSelector((state) => selectPostById(state, postId));
 
   const {
-    user: { _id, username },
+    user: { _id },
     token
   } = useSelector((state) => state.auth);
 

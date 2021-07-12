@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import "./timeline.css";
 
 export const PostAuthor = ({ userId }) => {
-  const author = useSelector((state) => state.auth.user.username);
   const allUsers = useSelector((state) => state.users.users);
   const PostAuthor = allUsers.find((user) => user._id === userId);
 
