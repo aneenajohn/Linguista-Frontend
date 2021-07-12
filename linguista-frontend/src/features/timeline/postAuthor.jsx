@@ -4,10 +4,12 @@ import "./timeline.css";
 
 export const PostAuthor = ({ userId }) => {
   const author = useSelector((state) => state.auth.user.username);
+  const allUsers = useSelector((state) => state.users.users);
+  const PostAuthor = allUsers.find((user) => user._id === userId);
 
   return (
     <span className="para author-name">
-      By {author ? author : "Unkown Author"}
+      By {PostAuthor ? PostAuthor.username : "Unkown Author"}
     </span>
   );
 };

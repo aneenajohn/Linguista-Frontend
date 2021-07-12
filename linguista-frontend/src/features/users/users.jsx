@@ -1,9 +1,9 @@
-import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
+import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import { fetchUsers } from "./userSlice";
 import { useSelector, useDispatch } from "react-redux";

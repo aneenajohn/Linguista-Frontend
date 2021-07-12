@@ -99,6 +99,7 @@ input[name="email"] {
   position: absolute;
   bottom: 1.3rem;
   left: 90%;
+  cursor: pointer;
 }
 @media screen and (max-width: 400px) {
   .inputForm {

@@ -22,9 +22,7 @@ export const AddNewPost = () => {
       await dispatch(
         newPostCreated({ userId: _id, title, description: content, token })
       );
-      // await postDispatch(
-      //   postAdded({ userId: _id, title, description: content })
-      // );
+      await dispatch(postAdded({ userId: _id, title, description: content }));
       setContent("");
       setTitle("");
     }

@@ -32,23 +32,6 @@ export const Login = () => {
     navigate("/posts");
   };
 
-  // useEffect(() => {
-  //   if (isLoggedIn) {
-  //     toast.success("Logged-in succesfully", {
-  //       position: "top-right",
-  //       autoClose: 3000,
-  //       hideProgressBar: true
-  //     });
-  //     navigate("/posts");
-  //   }
-  //   status === "error" &&
-  //     toast.dark(`${error}`, {
-  //       position: "top-right",
-  //       autoClose: 3000,
-  //       hideProgressBar: true
-  //     });
-  // }, [authDispatch, status, isLoggedIn]);
-
   return (
     <>
       <div className="topbarContainer">
@@ -107,7 +90,7 @@ export const Login = () => {
             </div>
             <div className="btn__container">
               <div className="btn btn--primary login" onClick={loginHandler}>
-                Login
+                {status === "loading" ? "Logging in" : "Login"}
               </div>
             </div>
             <p className="para signup-header">

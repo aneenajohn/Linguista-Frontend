@@ -121,8 +121,9 @@ const timelineSlice = createSlice({
     },
     [fetchPosts.fulfilled]: (state, action) => {
       state.status = "succeeded";
-      state.timeline = state.timeline.concat(action.payload.timeline);
+      // state.timeline = state.timeline.concat(action.payload.timeline);
       state.error = null;
+      state.timeline = action.payload.timeline;
     },
     [fetchPosts.rejected]: (state, action) => {
       state.status = "error";

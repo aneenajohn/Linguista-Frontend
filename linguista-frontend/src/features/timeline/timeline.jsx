@@ -19,6 +19,7 @@ export const Timeline = () => {
   const { timeline } = useSelector((state) => state.timeline);
 
   console.log("posts", posts);
+
   useEffect(() => {
     (async () => {
       if (timelineStatus === "idle") {
@@ -34,11 +35,15 @@ export const Timeline = () => {
       <Topbar />
       <section className="posts-list">
         <AddNewPost />
-        <h1 className="postTitle">Posts</h1>
+        <h1 className="postTitle">Timeline</h1>
         {timelineStatus === "loading" && <h2>Loading....</h2>}
         {timelineStatus === "error" && <h2>Something went wrong... </h2>}
         {timelineStatus === "succeeded" &&
-          posts.map((post) => <PostExcerpt key={post._id} post={post} />)}
+          (posts.length === 0 ? (
+            <div className="para--lead">No posts yet!</div>
+          ) : (
+            posts.map((post) => <PostExcerpt key={post._id} post={post} />)
+          ))}
         <div
           className="mr-bottom
         "
