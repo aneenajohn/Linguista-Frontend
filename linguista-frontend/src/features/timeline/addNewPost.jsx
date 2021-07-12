@@ -61,15 +61,15 @@ export const AddNewPost = () => {
           onChange={onContentChanged}
         />
 
-        <div class="btn__container">
-          <button
-            className="btn btn--primary"
-            onClick={onSavePostClicked}
-            disabled={!canSave}
-          >
-            Save Post
-          </button>
-        </div>
+        {/* <div class="btn__container"> */}
+        <button
+          className="btn btn--primary btn-right"
+          onClick={onSavePostClicked}
+          disabled={!canSave}
+        >
+          Save Post
+        </button>
+        {/* </div> */}
       </form>
     </section>
   );

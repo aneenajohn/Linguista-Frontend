@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectAllPosts, fetchPosts } from "./timelineSlice";
 import { PostExcerpt } from "./postExcerpt";
 import { AddNewPost } from "./addNewPost";
-// import { Topbar } from "../topbar/topbar";
+import { Topbar } from "../../topbar/topbar";
 
 export const Timeline = () => {
   const dispatch = useDispatch();
@@ -31,13 +31,18 @@ export const Timeline = () => {
 
   return (
     <div>
+      <Topbar />
       <section className="posts-list">
         <AddNewPost />
-        <h1>Posts</h1>
+        <h1 className="postTitle">Posts</h1>
         {timelineStatus === "loading" && <h2>Loading....</h2>}
         {timelineStatus === "error" && <h2>Something went wrong... </h2>}
         {timelineStatus === "succeeded" &&
           posts.map((post) => <PostExcerpt key={post._id} post={post} />)}
+        <div
+          className="mr-bottom
+        "
+        ></div>
       </section>
     </div>
   );

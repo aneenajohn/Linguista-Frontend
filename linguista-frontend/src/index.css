@@ -44,7 +44,21 @@ button.reaction-button {
   white-space: nowrap;
   cursor: pointer;
 }
+
+.btn-right {
+  float: right;
+  border: none;
+}
 /* Main content */
+
+.btn-left {
+  float: left;
+  border: none;
+}
+
+.btn-outlined {
+  margin-left: 0rem;
+}
 
 section {
   max-width: 800px;

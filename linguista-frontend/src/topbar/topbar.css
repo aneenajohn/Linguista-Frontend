@@ -1,5 +1,5 @@
 .topbarContainer {
-  height: 50px;
+  height: 57px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -13,8 +13,58 @@
 }
 
 .logo {
-  margin-left: 1.2rem;
+  margin-left: 0.8rem;
   font-weight: bold;
   color: var(--ow-font-color);
   cursor: pointer;
+}
+
+.topbarRight {
+  /* flex: 4; */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: var(--ow-font-color);
+}
+
+.topbarLink {
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.topbar-icon {
+  margin-right: 1rem;
+  font-size: 2rem;
+  display: grid;
+  place-items: center;
+}
+
+.topbarLink--title {
+  font-size: 2rem;
+  border: none;
+  outline: none;
+}
+
+.user-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.username {
+  text-transform: capitalize;
+}
+
+.profile-icon {
+  position: relative;
+  bottom: 5px;
+}
+
+.showProfile {
+  display: inline-block;
+}
+
+.hideProfile {
+  display: none;
 }

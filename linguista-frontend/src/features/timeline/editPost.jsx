@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { postUpdated, selectPostById, updatedPost } from "./timelineSlice";
+import {
+  postUpdated,
+  selectPostById,
+  updatedPost,
+  postDeleted,
+  userDeleted
+} from "./timelineSlice";
 import { useParams, useLocation } from "react-router-dom";
 import "./timeline.css";
+import { Topbar } from "../../topbar/topbar";
 // import {updatedPost} from "./timelineSlice;"
 
 export const EditPost = () => {
@@ -31,49 +38,72 @@ export const EditPost = () => {
 
   const onSavePostClicked = async () => {
     if (title && content) {
-      await dispatch(postUpdated({ id: postId, title, content }));
+      await dispatch(
+        postUpdated({
+          id: postId,
+          title,
+          description: content
+        })
+      );
       navigate(`/posts/${postId}`);
-      await dispatch(updatedPost({ userId: _id, title, content, token }));
+      await dispatch(
+        updatedPost({ postId, userId: _id, title, description: content, token })
+      );
     }
   };
 
+  const onDeletePostClicked = async () => {
+    console.log("postId in edit page", postId);
+    await dispatch(postDeleted({ postId: postId }));
+    navigate(`/posts`);
+    await dispatch(userDeleted({ postId: postId, userId: _id, token }));
+  };
+
   return (
-    <section>
-      <h2 className="para--lead">Edit Post</h2>
-      <form>
-        <label htmlFor="postTitle" className="para">
-          Post Title:
-        </label>
-        <br />
-        <input
-          type="text"
-          id="postTitle"
-          className="postTitle"
-          placeholder="What's on your mind?"
-          value={title}
-          onChange={onTitleChanged}
-        />
-        <br />
-        <label htmlFor="postContent" className="para">
-          Content:
-        </label>
-        <br />
-        <textarea
-          id="postContent"
-          className="postContent"
-          value={content}
-          onChange={onContentChanged}
-        />
-      </form>
-      <div class="btn__container">
+    <>
+      <Topbar />
+      <section>
+        <h2 className="para--lead">Edit Post</h2>
+        <form>
+          <label htmlFor="postTitle" className="para">
+            Post Title:
+          </label>
+          <br />
+          <input
+            type="text"
+            id="postTitle"
+            className="postTitle"
+            placeholder="What's on your mind?"
+            value={title}
+            onChange={onTitleChanged}
+          />
+          <br />
+          <label htmlFor="postContent" className="para">
+            Content:
+          </label>
+          <br />
+          <textarea
+            id="postContent"
+            className="postContent"
+            value={content}
+            onChange={onContentChanged}
+          />
+        </form>
         <button
           type="button"
-          className="btn btn--primary"
+          className="btn btn--primary btn-right"
           onClick={onSavePostClicked}
         >
           Save Post
         </button>
-      </div>
-    </section>
+        <button
+          type="button"
+          className="btn-outlined btn-outlined--primary btn-left"
+          onClick={onDeletePostClicked}
+        >
+          Delete Post
+        </button>
+      </section>
+    </>
   );
 };
