@@ -1,0 +1,92 @@
+.topbarContainer {
+  height: 57px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background-color: var(--primary-color);
+}
+
+.topbarLeft {
+  flex: 3;
+}
+
+.logo {
+  margin-left: 0.8rem;
+  font-weight: bold;
+  color: var(--ow-font-color);
+  cursor: pointer;
+}
+
+.topbarRight {
+  /* flex: 4; */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: var(--ow-font-color);
+}
+
+.topbarLink {
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.topbar-icon {
+  margin-right: 1rem;
+  font-size: 2rem;
+  display: grid;
+  place-items: center;
+}
+
+.topbarLink--title {
+  font-size: 2rem;
+  border: none;
+  outline: none;
+}
+
+.user-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.username {
+  text-transform: capitalize;
+}
+
+.profile-icon {
+  position: relative;
+  bottom: 5px;
+}
+
+.showProfile {
+  /* z-index: 1; */
+  float: right;
+  cursor: pointer;
+  /* display: inline-block; */
+  background-color: #fffbeb;
+  padding: 1rem 5rem 3rem 1.5rem;
+  font-size: 1.5rem;
+}
+
+.hideProfile {
+  display: none;
+}
+
+.user {
+  font-size: 1.6rem;
+  font-style: italic;
+}
+
+.logout {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.logout--icon {
+  font-size: 3rem;
+  position: relative;
+  top: 9px;
+}
